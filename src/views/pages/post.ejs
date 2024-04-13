@@ -1,0 +1,97 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head.ejs'); %>
+	</head>
+	<body>
+		<div class="container max-w-screen-md mx-auto p-10">
+			<% if (data) { %>
+				<form
+			method="POST"
+			action="/admin/post/<%=data.title%>?_method=PUT"
+		>
+			  <% } else { %>
+				<form
+				method="POST"
+				action="/admin/post/store"
+			>
+				<% } %>
+				<div class="flex mt-2 h-8">
+					<span
+						class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+					>
+						<label
+							for="title"
+							class="block text-sm font-medium text-gray-900 dark:text-white"
+							>Title</label
+						>
+					</span>
+					<input
+						type="text"
+						id="title"
+						class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
+						name="title"
+						value="<%= data.title%>"
+					/>
+				</div>
+				<div class="flex mt-2 h-8">
+					<span
+						class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+					>
+						<label
+							for="desc"
+							class="block text-sm font-medium text-gray-900 dark:text-white"
+							>Description</label
+						>
+					</span>
+					<input
+						type="text"
+						id="desc"
+						class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
+						name="desc"
+						value="<%= data.desc%>"
+					/>
+				</div>
+
+				<div class="flex mt-2 h-8">
+					<span
+						class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+					>
+						<label
+							for="img"
+							class="block text-sm font-medium text-gray-900 dark:text-white"
+							>Picture</label
+						>
+					</span>
+					<input
+						class="hidden w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+						id="img"
+						type="file"
+					/>
+					<label
+						for="img"
+						class="pl-2 leading-8 cursor-pointer rounded-none rounded-e-lg bg-gray-50 border text-gray-900 block flex-1 min-w-0 w-full text-sm border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+						>Choose your picture</label
+					>
+				</div>
+				<div class="flex mt-2 justify-center">
+					<button
+						type="submit"
+						class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+					>
+						 <%= data.title ? 'Update' : 'Create' %>
+					</button>
+					<a
+						href="/admin"
+						class="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+					>
+						Cancel
+					</a>
+				</div>
+			</form>
+		</div>
+		<%- include('../partials/scripts.ejs'); %>
+	</body>
+</html>
